@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { Menu } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { navItems } from '@/data/dashboard-data';
 import { cn } from '@/lib/utils';
 
@@ -21,6 +21,9 @@ export function AppSidebar() {
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="flex flex-col">
+          <SheetHeader>
+            <SheetTitle className="sr-only">Menu Principal</SheetTitle>
+          </SheetHeader>
           <nav className="grid gap-2 text-lg font-medium">
             {navItems.map((item) => (
               <Link
