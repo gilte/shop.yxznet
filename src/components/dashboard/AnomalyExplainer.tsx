@@ -28,7 +28,7 @@ export function AnomalyExplainer({ performanceData }: AnomalyExplainerProps) {
       const result = await explainAnomalies({ performanceData });
       setExplanation(result.explanation);
     } catch (e) {
-      setError('An error occurred while analyzing the data. Please try again.');
+      setError('Ocorreu um erro ao analisar os dados. Por favor, tente novamente.');
       console.error(e);
     } finally {
       setIsLoading(false);
@@ -39,17 +39,17 @@ export function AnomalyExplainer({ performanceData }: AnomalyExplainerProps) {
     <>
       <Button onClick={handleExplain} variant="outline">
         <Wand2 className="mr-2 h-4 w-4" />
-        Explain Anomalies
+        Explicar Anomalias
       </Button>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <Wand2 className="h-5 w-5 text-primary" />
-              AI-Powered Anomaly Report
+              Relatório de Anomalias por IA
             </DialogTitle>
             <DialogDescription>
-              An analysis of recent performance data to highlight significant changes.
+              Uma análise dos dados de desempenho recentes para destacar mudanças significativas.
             </DialogDescription>
           </DialogHeader>
           <div className="py-4">
@@ -63,7 +63,7 @@ export function AnomalyExplainer({ performanceData }: AnomalyExplainerProps) {
             {error && (
               <Alert variant="destructive">
                 <AlertTriangle className="h-4 w-4" />
-                <AlertTitle>Error</AlertTitle>
+                <AlertTitle>Erro</AlertTitle>
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
             )}
@@ -72,7 +72,7 @@ export function AnomalyExplainer({ performanceData }: AnomalyExplainerProps) {
             )}
           </div>
           <DialogFooter>
-            <Button onClick={() => setIsOpen(false)} variant="secondary">Close</Button>
+            <Button onClick={() => setIsOpen(false)} variant="secondary">Fechar</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

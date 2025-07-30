@@ -25,13 +25,13 @@ export function UserPanelCard({ data }: UserPanelProps) {
         </Avatar>
         <div>
             <CardTitle className="font-headline">{data.company}</CardTitle>
-            <p className="text-sm text-muted-foreground">Welcome back, {data.name}</p>
+            <p className="text-sm text-muted-foreground">Bem-vinda de volta, {data.name}</p>
         </div>
       </CardHeader>
       <CardContent className="flex flex-col flex-grow">
         <Separator />
         <div className="my-4 text-center">
-            <p className="text-sm text-muted-foreground">Account Balance</p>
+            <p className="text-sm text-muted-foreground">Saldo da Conta</p>
             <p className="text-3xl font-bold">{data.value}</p>
         </div>
         <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">

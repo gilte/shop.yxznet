@@ -31,18 +31,18 @@ export function AppHeader() {
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
-              placeholder="Search your dashboard..."
+              placeholder="Pesquise no seu dashboard..."
               className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px] bg-background text-foreground"
             />
           </div>
         </form>
         <Button variant="ghost" size="icon" className="rounded-full hover:bg-primary/90">
           <Bell className="h-5 w-5" />
-          <span className="sr-only">Toggle notifications</span>
+          <span className="sr-only">Alternar notificações</span>
         </Button>
         <Button variant="ghost" size="icon" className="rounded-full hover:bg-primary/90">
           <Settings className="h-5 w-5" />
-          <span className="sr-only">Toggle settings</span>
+          <span className="sr-only">Alternar configurações</span>
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -54,13 +54,13 @@ export function AppHeader() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuLabel>Minha Conta</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Billing</DropdownMenuItem>
-            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem>Perfil</DropdownMenuItem>
+            <DropdownMenuItem>Faturamento</DropdownMenuItem>
+            <DropdownMenuItem>Configurações</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Logout</DropdownMenuItem>
+            <DropdownMenuItem>Sair</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

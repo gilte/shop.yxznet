@@ -17,7 +17,7 @@ export function AppSidebar() {
         <SheetTrigger asChild>
           <Button variant="ghost" size="icon" className="shrink-0 lg:hidden hover:bg-primary/90">
             <Menu className="h-5 w-5" />
-            <span className="sr-only">Toggle navigation menu</span>
+            <span className="sr-only">Alternar menu de navegação</span>
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="flex flex-col">

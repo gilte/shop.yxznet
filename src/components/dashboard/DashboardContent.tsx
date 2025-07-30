@@ -32,7 +32,7 @@ export function DashboardContent() {
       </div>
       
       <div>
-        <h3 className="text-2xl font-bold tracking-tight font-headline mb-4">Key Metrics</h3>
+        <h3 className="text-2xl font-bold tracking-tight font-headline mb-4">Métricas Chave</h3>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {metricsData.map((data) => (
                 <MetricCard key={data.title} {...data} />

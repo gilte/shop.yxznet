@@ -21,7 +21,7 @@ export function SalesSummaryCard({ title, value, change, changeType, icon: Icon 
             {changeType === 'increase' ? <ArrowUp className="h-3 w-3" /> : <ArrowDown className="h-3 w-3" />}
             {change}
           </span>
-           vs last month
+           vs último mês
         </p>
       </CardContent>
     </Card>

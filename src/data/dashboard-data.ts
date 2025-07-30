@@ -36,21 +36,21 @@ export type SalesSummaryData = {
 
 export const salesSummaryData: SalesSummaryData[] = [
   {
-    title: "Today's Sales",
+    title: "Vendas de Hoje",
     value: "R$ 15.523",
     change: "+12.5%",
     changeType: "increase",
     icon: DollarSign,
   },
   {
-    title: "Monthly Goal",
+    title: "Meta Mensal",
     value: "R$ 100.000",
-    change: "75% Reached",
+    change: "75% Atingido",
     changeType: "increase",
     icon: TrendingUp,
   },
   {
-    title: "Today's Expenses",
+    title: "Despesas de Hoje",
     value: "R$ 5.420,50",
     change: "+8.2%",
     changeType: "decrease",
@@ -59,13 +59,13 @@ export const salesSummaryData: SalesSummaryData[] = [
 ];
 
 export const salesChartData = [
-  { name: 'Jan', sales: 4000, expenses: 2400 },
-  { name: 'Feb', sales: 3000, expenses: 1398 },
-  { name: 'Mar', sales: 5000, expenses: 9800 },
-  { name: 'Apr', sales: 2780, expenses: 3908 },
-  { name: 'May', sales: 1890, expenses: 4800 },
-  { name: 'Jun', sales: 2390, expenses: 3800 },
-  { name: 'Jul', sales: 3490, expenses: 4300 },
+  { name: 'Jan', vendas: 4000, despesas: 2400 },
+  { name: 'Fev', vendas: 3000, despesas: 1398 },
+  { name: 'Mar', vendas: 5000, despesas: 9800 },
+  { name: 'Abr', vendas: 2780, despesas: 3908 },
+  { name: 'Mai', vendas: 1890, despesas: 4800 },
+  { name: 'Jun', vendas: 2390, despesas: 3800 },
+  { name: 'Jul', vendas: 3490, despesas: 4300 },
 ];
 
 export type MetricData = {
@@ -79,7 +79,7 @@ export const metricsData: MetricData[] = [
   { title: 'Vendas realizadas', value: '1.250', icon: ShoppingCart },
   { title: 'Assinaturas', value: '320', icon: CreditCard },
   { title: 'MRR', value: 'R$ 25.800', icon: PiggyBank },
-  { title: 'Churn Rate', value: '4.2%', icon: TrendingDown },
+  { title: 'Taxa de Churn', value: '4.2%', icon: TrendingDown },
   { title: 'Receita de anúncios', value: 'R$ 1.200', icon: Receipt },
   { title: 'Novos clientes', value: '45', icon: Users },
   { title: 'Vendas concluídas', value: '98%', icon: CheckCircle },

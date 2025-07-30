@@ -29,9 +29,9 @@ const prompt = ai.definePrompt({
   name: 'explainAnomaliesPrompt',
   input: {schema: ExplainAnomaliesInputSchema},
   output: {schema: ExplainAnomaliesOutputSchema},
-  prompt: `Analyze the following dashboard performance data and provide a brief explanation of any significant anomalies, such as large MRR values or Churn Rates. If there are no significant anomalies, state that there are none.
+  prompt: `Analise os seguintes dados de desempenho do dashboard e forneça uma breve explicação de quaisquer anomalias significativas, como grandes valores de MRR ou Taxas de Churn. Se não houver anomalias significativas, afirme que não há nenhuma. A resposta deve estar em português.
 
-Data: {{{performanceData}}}
+Dados: {{{performanceData}}}
 `,
 });
 

@@ -5,15 +5,15 @@ import { Line, LineChart, ResponsiveContainer, XAxis, YAxis, Tooltip, Legend, Ca
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
 type SalesChartProps = {
-  data: { name: string; sales: number; expenses: number }[];
+  data: { name: string; vendas: number; despesas: number }[];
 };
 
 export function SalesChart({ data }: SalesChartProps) {
   return (
     <Card className="h-full">
       <CardHeader>
-        <CardTitle>Sales Overview</CardTitle>
-        <CardDescription>A look at sales and expenses over the last months.</CardDescription>
+        <CardTitle>Visão Geral de Vendas</CardTitle>
+        <CardDescription>Uma análise das vendas e despesas nos últimos meses.</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="h-[300px]">
@@ -30,8 +30,8 @@ export function SalesChart({ data }: SalesChartProps) {
                 }}
               />
               <Legend wrapperStyle={{fontSize: "14px"}}/>
-              <Line type="monotone" dataKey="sales" stroke="hsl(var(--primary))" strokeWidth={2} activeDot={{ r: 8 }} />
-              <Line type="monotone" dataKey="expenses" stroke="hsl(var(--accent))" strokeWidth={2} />
+              <Line type="monotone" dataKey="vendas" stroke="hsl(var(--primary))" strokeWidth={2} activeDot={{ r: 8 }} />
+              <Line type="monotone" dataKey="despesas" stroke="hsl(var(--accent))" strokeWidth={2} />
             </LineChart>
           </ResponsiveContainer>
         </div>
