@@ -28,7 +28,7 @@ export function AppHeader() {
       setUser(JSON.parse(storedUser));
     }
 
-    // Adiciona um listener para atualizar o header se o usuário mudar em outra aba
+    // Adiciona um listener para atualizar o header se o usuário mudar em outra aba/componente
     const handleStorageChange = () => {
         const updatedUser = localStorage.getItem('kiwiboard-user');
         setUser(updatedUser ? JSON.parse(updatedUser) : null);

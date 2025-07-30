@@ -31,8 +31,9 @@ export default function LoginPage() {
         body: JSON.stringify({ email, password }),
       });
 
+      const data = await response.json();
+
       if (response.ok) {
-        const data = await response.json();
         // Armazena o token e os dados do usuário no localStorage
         localStorage.setItem('kiwiboard-token', data.token);
         localStorage.setItem('kiwiboard-user', JSON.stringify(data.data));
@@ -43,11 +44,10 @@ export default function LoginPage() {
         });
         router.push('/');
       } else {
-        const errorData = await response.json();
         toast({
           variant: 'destructive',
           title: 'Erro de login',
-          description: errorData.message || 'Credenciais inválidas. Tente novamente.',
+          description: data.message || 'Credenciais inválidas. Tente novamente.',
         });
       }
     } catch (error) {

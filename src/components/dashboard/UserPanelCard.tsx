@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -45,40 +44,54 @@ export function UserPanelCard() {
         return;
     }
     
-    // Lógica de Upload (a ser implementada com o backend)
-    // 1. Crie um FormData
-    // const formData = new FormData();
-    // formData.append('avatar', file);
-    //
-    // 2. Envie para a API
-    // try {
-    //   const response = await fetch('SUA_URL_DE_UPLOAD_AQUI', {
-    //     method: 'POST',
-    //     body: formData,
-    //     headers: {
-    //       'Authorization': `Bearer ${localStorage.getItem('kiwiboard-token')}`
-    //     }
-    //   });
-    //   const updatedUser = await response.json();
-    //   
-    //   // 3. Atualize o localStorage e o estado
-    //   localStorage.setItem('kiwiboard-user', JSON.stringify(updatedUser.data));
-    //   setUser(updatedUser.data);
-    //
-    //   toast({ title: 'Sucesso!', description: 'Sua foto de perfil foi atualizada.' });
-    //
-    // } catch (error) {
-    //   toast({ variant: 'destructive', title: 'Erro', description: 'Não foi possível atualizar a foto.' });
-    // }
-
-    toast({
-        title: 'Upload iniciado (simulação)',
-        description: `O arquivo ${file.name} foi selecionado. Conecte a sua API de upload.`,
+    // Lógica de Upload que você irá implementar com o backend
+    // 1. Crie um FormData para enviar o arquivo
+    const formData = new FormData();
+    formData.append('avatar', file);
+    
+    // Adicione um toast para indicar o início do upload
+    const { dismiss } = toast({
+      title: 'Enviando imagem...',
+      description: 'Por favor, aguarde.',
     });
+
+    try {
+      const token = localStorage.getItem('kiwiboard-token');
+      // 2. Envie para a sua API. Use PUT ou POST conforme sua definição no back-end.
+      const response = await fetch('https://shop-yxznet-back.onrender.com/api/auth/avatar', { // Endpoint de exemplo
+        method: 'PUT', // ou 'POST'
+        body: formData,
+        headers: {
+          // 'Content-Type': 'multipart/form-data' é definido automaticamente pelo navegador com FormData
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Falha no upload da imagem.');
+      }
+
+      const updatedUser = await response.json();
+      
+      // 3. Atualize o localStorage e o estado com os dados retornados pelo back-end
+      localStorage.setItem('kiwiboard-user', JSON.stringify(updatedUser.data));
+      setUser(updatedUser.data);
+      
+      // Dispara um evento de storage para que o AppHeader também atualize a imagem
+      window.dispatchEvent(new Event('storage'));
+
+      dismiss();
+      toast({ title: 'Sucesso!', description: 'Sua foto de perfil foi atualizada.' });
+
+    } catch (error) {
+      dismiss();
+      const errorMessage = error instanceof Error ? error.message : 'Não foi possível atualizar a foto.';
+      toast({ variant: 'destructive', title: 'Erro', description: errorMessage });
+    }
   };
 
   const displayName = user?.name ?? 'Usuário';
-  const displayCompany = user?.email.split('@')[1] ?? 'kiwienterprises.com';
+  const displayEmail = user?.email ?? 'email@exemplo.com';
   const displayAvatarFallback = displayName.charAt(0).toUpperCase();
   
   return (
@@ -107,8 +120,8 @@ export function UserPanelCard() {
             />
         </div>
         <div>
-            <CardTitle className="font-headline">{displayCompany}</CardTitle>
-            <p className="text-sm text-muted-foreground">Bem-vindo(a) de volta, {displayName.split(' ')[0]}</p>
+            <CardTitle className="font-headline text-lg">{displayName}</CardTitle>
+            <p className="text-sm text-muted-foreground truncate">{displayEmail}</p>
         </div>
       </CardHeader>
       <CardContent className="flex flex-col flex-grow">
