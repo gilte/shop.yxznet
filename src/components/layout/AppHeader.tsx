@@ -16,8 +16,8 @@ export function AppHeader() {
   const router = useRouter();
 
   const handleLogout = () => {
-    // Limpa o estado de autenticação do localStorage
-    localStorage.removeItem('kiwiboard-auth');
+    // Limpa o token de autenticação do localStorage
+    localStorage.removeItem('kiwiboard-token');
     router.push('/login');
   };
 

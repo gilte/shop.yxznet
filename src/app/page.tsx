@@ -15,8 +15,8 @@ export default function Home() {
 
   useEffect(() => {
     // A verificação do localStorage só pode acontecer no lado do cliente.
-    const userIsAuthenticated = !!localStorage.getItem('kiwiboard-auth');
-    if (!userIsAuthenticated) {
+    const token = localStorage.getItem('kiwiboard-token');
+    if (!token) {
       router.push('/login');
     } else {
       setIsAuthenticated(true);

@@ -32,8 +32,9 @@ export default function LoginPage() {
       });
 
       if (response.ok) {
-        // Guarda o estado de autenticado no localStorage
-        localStorage.setItem('kiwiboard-auth', 'true');
+        const data = await response.json();
+        // Armazena o token JWT no localStorage
+        localStorage.setItem('kiwiboard-token', data.token);
         
         toast({
           title: 'Sucesso!',
