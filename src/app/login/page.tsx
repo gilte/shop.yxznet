@@ -23,7 +23,7 @@ export default function LoginPage() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(' https://shop-yxznet-back.onrender.com/api/auth/login', {
+      const response = await fetch('https://shop-yxznet-back.onrender.com/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -32,7 +32,9 @@ export default function LoginPage() {
       });
 
       if (response.ok) {
-        // Sucesso no login - idealmente você receberia um token aqui
+        // Guarda o estado de autenticado no localStorage
+        localStorage.setItem('kiwiboard-auth', 'true');
+        
         toast({
           title: 'Sucesso!',
           description: 'Login realizado com sucesso. Redirecionando...',

@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -15,7 +16,8 @@ export function AppHeader() {
   const router = useRouter();
 
   const handleLogout = () => {
-    // Aqui você pode adicionar a lógica de limpeza de sessão/token se necessário
+    // Limpa o estado de autenticação do localStorage
+    localStorage.removeItem('kiwiboard-auth');
     router.push('/login');
   };
 
