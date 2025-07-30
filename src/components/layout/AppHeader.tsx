@@ -14,6 +14,7 @@ import { AppSidebar } from './AppSidebar';
 type User = {
   name: string;
   email: string;
+  avatarUrl?: string;
 };
 
 export function AppHeader() {
@@ -26,13 +27,27 @@ export function AppHeader() {
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
+
+    // Adiciona um listener para atualizar o header se o usuário mudar em outra aba
+    const handleStorageChange = () => {
+        const updatedUser = localStorage.getItem('kiwiboard-user');
+        setUser(updatedUser ? JSON.parse(updatedUser) : null);
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => {
+        window.removeEventListener('storage', handleStorageChange);
+    };
   }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('kiwiboard-token');
     localStorage.removeItem('kiwiboard-user');
+    setUser(null);
     router.push('/login');
   };
+
+  const displayAvatarFallback = user?.name?.charAt(0).toUpperCase() ?? '?';
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-primary px-4 text-primary-foreground md:px-6">
@@ -74,8 +89,8 @@ export function AppHeader() {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="rounded-full">
                 <Avatar className="h-8 w-8">
-                  <AvatarImage src={`https://i.pravatar.cc/150?u=${user.email}`} alt={user.name} />
-                  <AvatarFallback>{user.name?.charAt(0).toUpperCase()}</AvatarFallback>
+                  <AvatarImage src={user.avatarUrl} alt={user.name} />
+                  <AvatarFallback>{displayAvatarFallback}</AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
