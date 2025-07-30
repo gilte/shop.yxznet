@@ -1,26 +1,23 @@
 import React from 'react';
-import { Search, Bell, Settings, Menu } from 'lucide-react';
+import { Search, Bell, Settings } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { userPanelData } from '@/data/dashboard-data';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { navItems } from '@/data/dashboard-data';
 import { KiwiIcon } from '../icons';
-import Link from 'next/link';
 import { AppSidebar } from './AppSidebar';
 
 export function AppHeader() {
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-primary text-primary-foreground px-4 md:px-6">
+    <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-primary px-4 text-primary-foreground md:px-6">
        <div className="flex items-center gap-2">
          <div className="lg:hidden">
-             <AppSidebar />
+            <AppSidebar />
          </div>
           <div className="flex items-center gap-2">
-            <div className="bg-primary-foreground text-primary p-2 rounded-lg">
-                <KiwiIcon className="w-6 h-6" />
+            <div className="bg-primary-foreground p-2 text-primary rounded-lg">
+                <KiwiIcon className="h-6 w-6" />
             </div>
             <h1 className="text-xl font-headline font-semibold text-primary-foreground">
                 KiwiBoard
