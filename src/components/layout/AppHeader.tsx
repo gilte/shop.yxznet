@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import { Search, Bell, Settings } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -9,6 +12,13 @@ import { KiwiIcon } from '../icons';
 import { AppSidebar } from './AppSidebar';
 
 export function AppHeader() {
+  const router = useRouter();
+
+  const handleLogout = () => {
+    // Aqui você pode adicionar a lógica de limpeza de sessão/token se necessário
+    router.push('/login');
+  };
+
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-primary px-4 text-primary-foreground md:px-6">
        <div className="flex items-center gap-2">
@@ -60,7 +70,7 @@ export function AppHeader() {
             <DropdownMenuItem>Faturamento</DropdownMenuItem>
             <DropdownMenuItem>Configurações</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Sair</DropdownMenuItem>
+            <DropdownMenuItem onClick={handleLogout}>Sair</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
