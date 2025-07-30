@@ -1,21 +1,33 @@
 import React from 'react';
-import { Search, Bell, Settings } from 'lucide-react';
+import { Search, Bell, Settings, Menu } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { SidebarTrigger } from '@/components/ui/sidebar';
 import { userPanelData } from '@/data/dashboard-data';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { navItems } from '@/data/dashboard-data';
+import { KiwiIcon } from '../icons';
+import Link from 'next/link';
+import { AppSidebar } from './AppSidebar';
 
 export function AppHeader() {
   return (
-    <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
-      <div className="flex items-center gap-2">
-        <SidebarTrigger className="md:hidden" />
-        <h1 className="text-lg font-semibold md:text-xl font-headline hidden md:block">
-          Good Morning, {userPanelData.name}!
-        </h1>
-      </div>
+    <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-primary text-primary-foreground px-4 md:px-6">
+       <div className="flex items-center gap-2">
+         <div className="lg:hidden">
+             <AppSidebar />
+         </div>
+          <div className="flex items-center gap-2">
+            <div className="bg-primary-foreground text-primary p-2 rounded-lg">
+                <KiwiIcon className="w-6 h-6" />
+            </div>
+            <h1 className="text-xl font-headline font-semibold text-primary-foreground">
+                KiwiBoard
+            </h1>
+          </div>
+       </div>
+
       <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
         <form className="ml-auto flex-1 sm:flex-initial">
           <div className="relative">
@@ -23,15 +35,15 @@ export function AppHeader() {
             <Input
               type="search"
               placeholder="Search your dashboard..."
-              className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
+              className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px] bg-background text-foreground"
             />
           </div>
         </form>
-        <Button variant="ghost" size="icon" className="rounded-full">
+        <Button variant="ghost" size="icon" className="rounded-full hover:bg-primary/90">
           <Bell className="h-5 w-5" />
           <span className="sr-only">Toggle notifications</span>
         </Button>
-        <Button variant="ghost" size="icon" className="rounded-full">
+        <Button variant="ghost" size="icon" className="rounded-full hover:bg-primary/90">
           <Settings className="h-5 w-5" />
           <span className="sr-only">Toggle settings</span>
         </Button>
