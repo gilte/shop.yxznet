@@ -11,9 +11,37 @@ import {
 import { navItems } from '@/data/dashboard-data';
 import { KiwiIcon } from '@/components/icons';
 import { usePathname } from 'next/navigation';
+import { useSidebar } from '@/components/ui/sidebar';
 
 export function AppSidebar() {
   const pathname = usePathname();
+  const { isMobile } = useSidebar();
+
+  if (isMobile) {
+    return (
+      <Sidebar>
+        <SidebarContent className="p-2">
+          <SidebarMenu className="flex flex-row flex-wrap justify-center">
+            {navItems.map((item) => (
+              <SidebarMenuItem key={item.label} className="m-1">
+                <SidebarMenuButton
+                  href={item.href}
+                  isActive={pathname === item.href}
+                  className="font-medium"
+                  tooltip={item.label}
+                  variant="outline"
+                  size="sm"
+                >
+                  <item.icon />
+                  <span>{item.label}</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            ))}
+          </SidebarMenu>
+        </SidebarContent>
+      </Sidebar>
+    );
+  }
 
   return (
     <Sidebar>
