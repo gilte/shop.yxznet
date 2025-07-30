@@ -33,8 +33,9 @@ export default function LoginPage() {
 
       if (response.ok) {
         const data = await response.json();
-        // Armazena o token JWT no localStorage
+        // Armazena o token e os dados do usuário no localStorage
         localStorage.setItem('kiwiboard-token', data.token);
+        localStorage.setItem('kiwiboard-user', JSON.stringify(data.data));
         
         toast({
           title: 'Sucesso!',

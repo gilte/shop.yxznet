@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { salesSummaryData, metricsData, userPanelData, salesChartData } from '@/data/dashboard-data';
+import { salesSummaryData, metricsData, salesChartData } from '@/data/dashboard-data';
 import { SalesSummaryCard } from './SalesSummaryCard';
 import { MetricCard } from './MetricCard';
 import { SalesChart } from './SalesChart';
@@ -7,7 +8,7 @@ import { UserPanelCard } from './UserPanelCard';
 import { AnomalyExplainer } from './AnomalyExplainer';
 
 export function DashboardContent() {
-  const allData = { salesSummaryData, metricsData, userPanelData, salesChartData };
+  const allData = { salesSummaryData, metricsData, salesChartData };
 
   return (
     <div className="flex flex-col gap-8">
@@ -27,7 +28,7 @@ export function DashboardContent() {
             <SalesChart data={salesChartData} />
         </div>
         <div className="lg:col-span-2">
-            <UserPanelCard data={userPanelData} />
+            <UserPanelCard />
         </div>
       </div>
       
